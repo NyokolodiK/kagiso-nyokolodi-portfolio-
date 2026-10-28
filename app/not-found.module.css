@@ -1,0 +1,139 @@
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 26px var(--pad) clamp(60px, 8vw, 110px);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.meta b {
+  font-weight: 400;
+  color: var(--lime);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(40px, 7vw, 100px);
+  align-items: center;
+  min-height: 62vh;
+  padding: clamp(50px, 8vw, 100px) 0;
+}
+
+.code {
+  font-family: var(--display);
+  font-size: clamp(8rem, 20vw, 17rem);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(216, 255, 62, 0.65);
+}
+
+.copy h1 {
+  margin-bottom: 26px;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+}
+
+.copy h1 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--lime);
+}
+
+.copy p {
+  max-width: 390px;
+  margin-bottom: 32px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary,
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 17px;
+  border-radius: 2px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    color 0.25s,
+    transform 0.25s var(--ease);
+}
+
+.primary {
+  background: var(--lime);
+  border: 1px solid var(--lime);
+  color: var(--lime-ink);
+}
+
+.primary:hover {
+  background: var(--text);
+  border-color: var(--text);
+  transform: translateY(-2px);
+}
+
+.ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+}
+
+.ghost:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+  .wrap {
+    padding-top: 20px;
+  }
+  .meta {
+    font-size: 8px;
+  }
+  .body {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    min-height: 0;
+    padding: 60px 0 40px;
+  }
+  .code {
+    font-size: clamp(7rem, 36vw, 10rem);
+  }
+  .copy h1 {
+    font-size: clamp(2.8rem, 12vw, 3.8rem);
+  }
+  .primary,
+  .ghost {
+    padding: 12px 14px;
+    font-size: 8px;
+  }
+}

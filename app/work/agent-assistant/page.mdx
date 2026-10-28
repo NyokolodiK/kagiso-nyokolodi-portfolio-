@@ -1,0 +1,101 @@
+import {CaseStudy} from '@/components/CaseStudy'
+import {AgentVisual} from '@/components/Visual'
+
+export const metadata={title:'Agent Assistant',description:'Engineering typed streaming and structured actions for an AI-enabled product.'}
+
+<CaseStudy number="02" title="Agent Assistant" intro="From a stream of tokens to a useful product experience. Engineering the boundaries between an AI system and its host application." discipline="AI applications · Streaming integration" visual={<AgentVisual/>} nextHref="/work/quick-builder" nextTitle="Quick Builder">
+
+<section id="context">
+
+## Context
+
+An AI assistant becomes useful when it can participate in a product’s actual workflow. Agent Assistant connects streamed responses, retrieval and tools to a host application, including structured itinerary actions.
+
+The challenge extends beyond rendering a conversation. The system needs to communicate progress, distinguish text from actionable information and recover when an interaction does not complete as expected.
+
+</section>
+
+<section id="role">
+
+## My role
+
+I lead **architecture, solution design and implementation** of Agent Assistant, spanning the FastAPI service, Preact experience and host application integration.
+
+I collaborate with the UX team’s Figma design input while owning the engineering approach and product integration. This is an evolving application, with ongoing work across the service and product experience.
+
+</section>
+
+<section id="constraints">
+
+## Constraints
+
+- Streaming crosses a Python service and a TypeScript frontend.
+- Structured itinerary actions need clearer contracts than conversational text alone.
+- The assistant operates inside a host product with its own state and interactions.
+- Retrieval and tool integration introduce failure and recovery paths that need evaluation.
+
+</section>
+
+<section id="decisions">
+
+## Decisions / trade-offs
+
+### Typed events across the stream
+
+Typed server-sent events connect FastAPI to Preact. This gives the application a deliberate contract for streamed information instead of relying on presentation text to carry every meaning.
+
+The trade-off is contract discipline: producer and consumer need to evolve together. That coordination is worthwhile when the frontend must distinguish response content from structured behavior.
+
+### Structured actions as a product boundary
+
+Itinerary actions are modeled explicitly. The host application can work with structured intent at the integration boundary rather than trying to interpret arbitrary prose as product instructions.
+
+### Recovery is part of the experience
+
+Evaluation and recovery behavior sit alongside the successful path. Retrieval and tools need to be considered in terms of what the user sees when progress stops or an action cannot be completed.
+
+> A convincing response is only one part of a dependable application.
+
+</section>
+
+<section id="implementation">
+
+## Implementation
+
+The architecture connects a **FastAPI orchestration layer** to a **Preact experience through typed SSE**, with integration into the host application.
+
+Retrieval supplies relevant context and tools support explicit actions. Structured itinerary actions connect assistant behavior to the product workflow, while evaluation and recovery work helps assess behavior beyond the ideal interaction.
+
+The diagram is a simplified conceptual view drawn for this portfolio. It communicates the boundaries without exposing internal operational details.
+
+### Building AI products, using development tools
+
+Agent Assistant is an AI-enabled application I engineer. I use Codex and Claude as development tools in my engineering workflow.
+
+</section>
+
+<section id="evidence">
+
+## Evidence / results
+
+The technical evidence centers on the integrated system:
+
+- Typed streaming SSE between FastAPI and Preact.
+- Structured itinerary actions connected to the host application.
+- Retrieval and tool integration within the assistant architecture.
+- Evaluation and recovery behavior considered alongside successful responses.
+
+
+</section>
+
+<section id="lessons">
+
+## Lessons
+
+Streaming is an application contract, not just a rendering technique. A useful event boundary helps the interface represent what the system is doing and lets the host application respond deliberately.
+
+AI integration also makes uncertainty visible. Designing recovery and evaluating behavior are part of building the product, alongside orchestration and interface work.
+
+</section>
+
+</CaseStudy>

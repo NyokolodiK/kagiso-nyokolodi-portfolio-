@@ -1,0 +1,97 @@
+import {CaseStudy} from '@/components/CaseStudy'
+import {BuilderVisual} from '@/components/Visual'
+
+export const metadata={title:'Quick Builder',description:'Designing and engineering a modular itinerary workflow.'}
+
+<CaseStudy number="01" title="Quick Builder" intro="A complex journey, made manageable. Designing and engineering a modular workflow for building travel itineraries." discipline="Frontend architecture · Product experience" visual={<BuilderVisual/>} nextHref="/work/agent-assistant" nextTitle="Agent Assistant">
+
+<section id="context">
+
+## Context
+
+An itinerary is a connected set of decisions. Accommodation affects the shape of a trip; activities and transport need to fit around it. Quick Builder brings those decisions into a modular workflow without treating every step as an isolated form.
+
+The engineering challenge was to preserve a coherent journey while making each part understandable and independently maintainable.
+
+</section>
+
+<section id="role">
+
+## My role
+
+I led **solution design, architecture and end-to-end implementation** of Quick Builder. That included the structure of the workflow, frontend state and data boundaries, asynchronous feedback, accessibility and testing.
+
+I collaborated with the UX team, who supply designs in Figma. My role connected that design input to the product’s interaction model and the engineering decisions needed to make it work.
+
+</section>
+
+<section id="constraints">
+
+## Constraints
+
+- Accommodation, activities and transport have distinct interactions, but belong to one itinerary.
+- Room feedback arrives asynchronously and needs a clear place in the experience.
+- Shared journey state must stay coherent without coupling every component to every other step.
+- A visually polished workflow still needs to work with a keyboard and support meaningful regression testing.
+
+</section>
+
+<section id="decisions">
+
+## Decisions / trade-offs
+
+### A modular workflow, a shared journey
+
+I structured the experience around accommodation, activity and transport steps. The boundary follows the user’s task, giving each step a clear responsibility while keeping itinerary-level concerns at the workflow level.
+
+The trade-off is coordination: modules still need an explicit way to exchange the information that belongs to the journey. Clear ownership is more useful here than pretending the steps are entirely independent.
+
+### Feedback belongs beside the decision
+
+Asynchronous room feedback needs to be understandable in the context of room selection. Treating that feedback as part of the workflow makes the relationship between a user action and its eventual result clearer.
+
+### Boundaries before convenience
+
+State and data ownership were architectural decisions. Shared information belongs at the appropriate coordination boundary; step-specific interaction state stays close to the step that owns it.
+
+> The interface should explain the journey. The architecture should explain who owns each part.
+
+</section>
+
+<section id="implementation">
+
+## Implementation
+
+The implementation connected the modular itinerary workflow to its underlying data, with focused boundaries between the accommodation, activity and transport experiences.
+
+Accessibility and testing were part of that implementation work: navigation, controls and feedback need to remain understandable as the workflow changes. Testing the connections between steps matters as much as testing a single isolated component.
+
+The illustration above is an original conceptual representation of these ideas. It is not a screenshot of the internal product.
+
+</section>
+
+<section id="evidence">
+
+## Evidence / results
+
+The grounded technical outcomes are the workflow itself and the engineering boundaries that support it:
+
+- A modular itinerary experience spanning accommodation, activities and transport.
+- Asynchronous room feedback connected to the selection experience.
+- Deliberate state and data boundaries across the journey.
+- Accessibility and testing included in the implementation.
+
+
+</section>
+
+<section id="lessons">
+
+## Lessons
+
+A modular interface only remains modular when its state follows the same boundaries. Breaking a screen into components is the easy part; deciding which information belongs to a step and which belongs to the journey is the more consequential design work.
+
+Asynchronous behavior also deserves first-class design attention. A response that arrives later is still part of the user’s current decision.
+
+</section>
+
+</CaseStudy>
