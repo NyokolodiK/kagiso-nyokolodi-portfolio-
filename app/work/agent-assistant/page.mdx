@@ -1,100 +1,129 @@
-import {CaseStudy} from '@/components/CaseStudy'
-import {AgentVisual} from '@/components/Visual'
+import { CaseStudy } from "@/components/CaseStudy";
+import { AgentVisual } from "@/components/Visual";
 
-export const metadata={title:'Agent Assistant',description:'Engineering typed streaming and structured actions for an AI-enabled product.'}
+export const metadata = {
+  title: "Agent Assistant",
+  description:
+    "Leading an AI application across typed streaming, semantic discovery, host integration and LLM evaluation.",
+  alternates: { canonical: "/work/agent-assistant" },
+  openGraph: {
+    title: "Agent Assistant — Kagiso Nyokolodi",
+    description:
+      "Leading an embeddable AI travel-planning experience across FastAPI, Preact, OpenAI, MCP and host integration.",
+    type: "article",
+  },
+};
 
-<CaseStudy number="02" title="Agent Assistant" intro="From a stream of tokens to a useful product experience. Engineering the boundaries between an AI system and its host application." discipline="AI applications · Streaming integration" visual={<AgentVisual/>} nextHref="/work/quick-builder" nextTitle="Quick Builder">
+<CaseStudy number="02" title="Agent Assistant" intro="Leading an embeddable AI travel-planning experience: the architecture and contracts that turn a streamed conversation into product actions, grounded recommendations and recoverable failure." discipline="AI applications / Cross-service architecture" scope="FastAPI, Preact, OpenAI, MCP & host bridges" status="Evolving application; live availability rollout requires coordinated acceptance" leverage="Typed streaming · semantic discovery · LLM evaluation suite" outcomes={['Streamed prose, product cards, dates and next steps have separate typed contracts.', 'Semantic discovery across Rails APIs, MCP and the assistant has explicit retrieval and product-card boundaries.', 'Structured-itinerary validation and a help-assistant track extend the LLM evaluation suite, alongside a 70% backend test-coverage gate.']} visual={<AgentVisual />} nextHref="/work/modernization" nextTitle="Platform modernization">
 
 <section id="context">
 
-## Context
+## The problem
 
-An AI assistant becomes useful when it can participate in a product’s actual workflow. Agent Assistant connects streamed responses, retrieval and tools to a host application, including structured itinerary actions.
+An assistant can produce a convincing answer without the evidence to act on it. In travel planning, a property that matches a search is not necessarily available for the requested dates and rooms — and a plausible itinerary is not the same as one the host application can accept.
 
-The challenge extends beyond rendering a conversation. The system needs to communicate progress, distinguish text from actionable information and recover when an interaction does not complete as expected.
+Agent Assistant connects a conversation to real product context, accommodation discovery, itinerary actions and availability tools. The engineering task is to make those connections useful while preserving the distinction between a suggestion, a confirmed fact and a completed product action.
 
 </section>
 
 <section id="role">
 
-## My role
+## My responsibility
 
-I lead **architecture, solution design and implementation** of Agent Assistant, spanning the FastAPI service, Preact experience and host application integration.
+I led **architecture and implementation** of the embeddable AI travel-planning experience, connecting FastAPI, Preact, OpenAI and existing booking workflows. I worked with UX on the product experience and across product, design and backend boundaries to keep the assistant aligned with the systems it acts on.
 
-I collaborate with the UX team’s Figma design input while owning the engineering approach and product integration. This is an evolving application, with ongoing work across the service and product experience.
+My ownership covered structured streaming, semantic accommodation discovery, reusable AI itinerary components, host application bridges, prompt and tool contracts, availability evidence, LLM evaluation and service coverage. The application is built collaboratively; the decisions and implementation work described here are the areas I owned.
 
 </section>
 
 <section id="constraints">
 
-## Constraints
+## The constraints
 
-- Streaming crosses a Python service and a TypeScript frontend.
-- Structured itinerary actions need clearer contracts than conversational text alone.
-- The assistant operates inside a host product with its own state and interactions.
-- Retrieval and tool integration introduce failure and recovery paths that need evaluation.
+- The service and interface need to distinguish streamed prose from structured product data: cards, dates and next steps.
+- Product search, semantic discovery and live supplier availability provide different kinds of evidence.
+- A live check needs exact dates, a resolved property and explicit room occupancy.
+- Supplier failures, unsupported connections and timeouts must remain visible as uncertainty.
+- Recommendations span multiple stops, room configurations and an itinerary handoff into the host application.
+- Contracts cross the assistant, Rails APIs, MCP tools and host application, so changes need coordinated validation.
 
 </section>
 
 <section id="decisions">
 
-## Decisions / trade-offs
+## Key decisions
 
-### Typed events across the stream
+### Make structured events a product contract
 
-Typed server-sent events connect FastAPI to Preact. This gives the application a deliberate contract for streamed information instead of relying on presentation text to carry every meaning.
+I implemented typed server-sent events between FastAPI and Preact/TypeScript, separating streamed prose from product cards, dates and next steps. This replaced brittle client-side parsing with incremental rendering.
 
-The trade-off is contract discipline: producer and consumer need to evolve together. That coordination is worthwhile when the frontend must distinguish response content from structured behavior.
+Structured itinerary actions give the host application an explicit integration boundary instead of asking it to infer an action from arbitrary text. The trade-off is coordination: event names and payloads need matching producer, consumer and test updates. I accepted that cost because the interface needs to distinguish response content, progress and actionable data reliably.
 
-### Structured actions as a product boundary
+### Own semantic discovery across three systems
 
-Itinerary actions are modeled explicitly. The host application can work with structured intent at the integration boundary rather than trying to interpret arbitrary prose as product instructions.
+I led engineering for semantic accommodation discovery across Rails APIs, MCP and the assistant. That meant aligning retrieval prompts, typed product-card contracts and host actions so a discovered property could become a usable recommendation rather than an ungrounded suggestion.
 
-### Recovery is part of the experience
+The boundary is deliberate: retrieval identifies candidates, typed cards define what the assistant can present, and host actions define what the product can do next. Keeping those responsibilities separate makes the discovery path testable and lets the assistant evolve without silently changing the booking workflows underneath it.
 
-Evaluation and recovery behavior sit alongside the successful path. Retrieval and tools need to be considered in terms of what the user sees when progress stops or an action cannot be completed.
+### Preserve uncertainty instead of flattening outcomes
 
-> A convincing response is only one part of a dependable application.
+I changed the assistant’s availability instructions so indexed search supports discovery, while live supplier checks provide confirmation for the **exact stay and room party**.
+
+Only a live result of `available` confirms the requested stay and party. `not_available` supports an unavailable response and an alternatives flow. `on_request`, `unsupported`, `failed` and `timed_out` leave availability unconfirmed for different reasons. The contract prohibits silently substituting indexed inventory when a live check fails. Successful results from one property can be retained when another check fails. The product can communicate partial progress without turning uncertainty into a false conclusion.
+
+### Build reuse into the AI surface
+
+I built reusable, themed AI itinerary components and typed host-application bridges for multi-stop recommendations, room availability and itinerary handoff. The components carry the product’s visual language; the bridges carry the contract between the embeddable assistant and the host.
+
+This is the leverage in the work. A new itinerary pattern or host action attaches to a shared boundary rather than being rebuilt inside the conversation, and the same typed contract supports rendering, testing and integration.
 
 </section>
 
 <section id="implementation">
 
-## Implementation
+## Delivery & validation
 
-The architecture connects a **FastAPI orchestration layer** to a **Preact experience through typed SSE**, with integration into the host application.
+The architecture connects FastAPI orchestration, OpenAI Responses API streaming, Rails APIs, MCP tools, a Preact widget and host application actions. Stream handling, structured bridges and itinerary components have distinct responsibilities within the chat feature.
 
-Retrieval supplies relevant context and tools support explicit actions. Structured itinerary actions connect assistant behavior to the product workflow, while evaluation and recovery work helps assess behavior beyond the ideal interaction.
+I extended an existing LLM evaluation suite with structured-itinerary validation and a help-assistant track. That separates two questions: whether the assistant produced a valid itinerary structure, and whether it behaved correctly as a help assistant. Alongside prompt and instruction tests, this makes the recommendation policy testable independently of the supplier integration.
 
-The diagram is a simplified conceptual view drawn for this portfolio. It communicates the boundaries without exposing internal operational details.
+I refactored streaming services while preserving event contracts and introduced a **70% backend test-coverage gate**. The product-side implementation includes separate supplier and tool-contract coverage. Live availability still connects independently deployed services, so release acceptance needs to exercise the complete path from supplier response to recommendation and host interface.
 
-### Building AI products, using development tools
+</section>
 
-Agent Assistant is an AI-enabled application I engineer. I use Codex and Claude as development tools in my engineering workflow.
+<section id="leverage">
+
+## Scope & leverage
+
+The assistant is a platform boundary, not a single chat surface. Typed SSE, product-card contracts and host bridges let the embeddable experience plug into booking workflows without the host parsing prose or the assistant owning host behaviour.
+
+Semantic discovery spans Rails APIs, MCP and the assistant. Retrieval prompts and typed cards are aligned so candidates can become grounded recommendations, and reusable themed components carry multi-stop recommendations, room availability and handoff across surfaces.
+
+The evaluation suite and the 70% backend coverage gate raise the baseline for future AI changes. Structured-itinerary validation and the help-assistant track make behaviour reviewable, while preserved event contracts keep streaming refactors from silently changing the product interface.
 
 </section>
 
 <section id="evidence">
 
-## Evidence / results
+## What changed
 
-The technical evidence centers on the integrated system:
+**Streaming became a typed product interface.** Prose, cards, dates and next steps have separate contracts; incremental rendering replaced brittle client-side parsing.
 
-- Typed streaming SSE between FastAPI and Preact.
-- Structured itinerary actions connected to the host application.
-- Retrieval and tool integration within the assistant architecture.
-- Evaluation and recovery behavior considered alongside successful responses.
+**Discovery became a cross-system capability.** Rails APIs, MCP and the assistant share retrieval prompts, typed product-card contracts and host actions for accommodation recommendations.
 
+**Availability claims have a defined evidence threshold.** Search results identify candidates; an exact live check is required before describing a stay as available, and failure outcomes retain their meaning.
+
+**AI quality became measurable.** Structured-itinerary validation, a help-assistant evaluation track and a 70% backend test-coverage gate make behaviour and regressions visible.
 
 </section>
 
 <section id="lessons">
 
-## Lessons
+## Reflection
 
-Streaming is an application contract, not just a rendering technique. A useful event boundary helps the interface represent what the system is doing and lets the host application respond deliberately.
+AI product quality depends on the boundaries around the model: the evidence a tool returns, the action the host can perform, and the uncertainty the interface preserves. The principal work is designing those boundaries so product, design and backend teams can change their side without breaking the others.
 
-AI integration also makes uncertainty visible. Designing recovery and evaluating behavior are part of building the product, alongside orchestration and interface work.
+> A confident response needs a clear account of what the system actually knows.
 
 </section>
 

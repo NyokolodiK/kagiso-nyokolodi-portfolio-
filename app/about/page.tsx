@@ -1,189 +1,287 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import s from './about.module.css';
-import { IdentityCard } from '@/components/IdentityCard';
+import type { Metadata } from "next";
+import Link from "next/link";
+import s from "./about.module.css";
+import { IdentityCard } from "@/components/IdentityCard";
+import { SystemMap } from "@/components/AboutVisuals";
+import { CareerTimeline } from "@/components/CareerTimeline";
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: "About",
   description:
-    'Kagiso Nyokolodi: Principal Software Engineer and Frontend Lead. Career, approach and education.',
+    "Kagiso Nyokolodi: Principal Software Engineer and Frontend Lead. Architecture, applied AI and delivery across a connected product portfolio.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About — Kagiso Nyokolodi",
+    description:
+      "Principal Software Engineer and Frontend Lead: architecture, applied AI and delivery across a connected product portfolio.",
+    type: "website",
+  },
 };
 
-const career = [
-  ['2024 — Present', 'Nawiri', 'Principal Software Engineer'],
-  ['Jul 2020 — 2024', 'NTT', 'Senior Frontend Engineer'],
-  ['Apr — Jun 2020', 'OneCart', 'Software Engineer'],
-  ['Oct 2018 — Mar 2020', 'Dimension Data', 'Senior Software Engineer'],
-  ['Sep 2015 — Sep 2018', 'XPERTEK', 'Software Developer'],
-  ['Apr 2013 — Aug 2015', 'IntelliLab', 'Web and Mobile Developer'],
+const heroFacts = [
+  ["Discipline", "Frontend leadership"],
+  ["Practice", "Applied AI"],
+  ["Scope", "Product portfolio"],
+  ["Building since", "2013"],
+];
+
+const notes = [
+  {
+    index: "01",
+    title: "Direction",
+    body: "Set the frontend direction across a connected product portfolio — internal operations, partner portals and traveller-facing products.",
+  },
+  {
+    index: "02",
+    title: "Architecture",
+    body: "Draw boundaries for data, state and responsibility that hold across React, Rails, FastAPI and MCP as the workflow changes.",
+  },
+  {
+    index: "03",
+    title: "Leverage",
+    body: "Turn repeated product problems into shared foundations: a UI library, data-fetching standard, typed contracts and a coverage gate.",
+  },
+  {
+    index: "04",
+    title: "Capability",
+    body: "Raise the bar through review, tests and shared patterns, and make the work teachable across product teams.",
+  },
+];
+
+const toolkit = [
+  {
+    label: "Interface",
+    items: [
+      "React",
+      "TypeScript",
+      "Preact",
+      "Next.js",
+      "Tailwind CSS",
+      "Storybook",
+      "TanStack Query",
+      "Vite",
+      "Accessibility",
+    ],
+  },
+  {
+    label: "Services",
+    items: ["FastAPI", "Python", "Rails", "MCP", "PostgreSQL", "Redis"],
+  },
+  {
+    label: "AI engineering",
+    items: ["OpenAI", "Typed streaming", "LLM evaluations", "Semantic retrieval"],
+  },
+  {
+    label: "Quality",
+    items: ["Jest", "Vitest", "Playwright", "pytest", "ESLint", "CI/CD"],
+  },
+  {
+    label: "Practice",
+    items: [
+      "Solution design",
+      "Architecture",
+      "Technical direction",
+      "Delivery",
+      "Mentoring",
+    ],
+  },
+  {
+    label: "Design collaboration",
+    items: ["Figma implementation", "Interaction states", "Accessibility semantics"],
+  },
 ];
 
 export default function About() {
   return (
     <div className={s.about}>
-      <section className={s.hero}>
-        <div className={s.meta}>
-          <span>
-            <b>About</b> / Kagiso Nyokolodi
-          </span>
-          <span>2013 — Now</span>
+      <section className={s.hero} aria-labelledby="about-title">
+        <div className={s.heroTop}>
+          <span className={s.label}>Profile / Kagiso Nyokolodi</span>
+          <span className={s.heroIndex}>Index / 02</span>
         </div>
-        <h1>
-          Engineering <em>clarity.</em>
+
+        <h1 id="about-title">
+          Frontend leadership,
           <br />
-          At every <em>layer.</em>
+          <em>end to end.</em>
         </h1>
-        <div className={s.heroFoot}>
-          <span>Frontend architecture</span>
-          <span>Product experience</span>
-          <span>AI-enabled applications</span>
+
+        <div className={s.heroBottom}>
+          <p>
+            Principal Software Engineer and Frontend Lead. I set architecture
+            and delivery across internal operations, partner portals and
+            traveller-facing products.
+          </p>
+          <dl className={s.heroFacts}>
+            {heroFacts.map(([term, value]) => (
+              <div key={term}>
+                <dt>{term}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      <section className={s.opening}>
-        <div className={s.cardWrap}>
+      <section className={s.profile}>
+        <div className={s.identity}>
           <IdentityCard />
         </div>
+
         <div className={s.bio}>
-          <span className={s.label}>
-            <b>01</b> Profile
-          </span>
+          <span className={s.label}>01 / Profile</span>
           <h2>
-            I work where
+            Frontend leadership
             <br />
-            systems meet <em>people.</em>
+            and product engineering.
           </h2>
-          <p>
-            My focus is frontend architecture, complex product experiences and AI-enabled
-            applications. I care about how a system is structured and how clearly someone can use
-            it.
+          <p className={s.bioLead}>
+            My work covers internal travel operations, partner portals and
+            traveller-facing products. I set architecture and standards as well
+            as shipping the interface. I care about what happens between a
+            user’s action and the system’s response, especially when that
+            response is delayed, incomplete or shared across services.
           </p>
           <p>
-            At Nawiri, I led the solution design, architecture and end-to-end implementation of
-            Quick Builder. I also lead Agent Assistant’s architecture, design and implementation,
-            connecting AI capabilities to a real product experience.
+            At Nawiri, I led Quick Builder’s solution design, architecture and
+            end-to-end implementation. I also lead Agent Assistant’s
+            architecture and implementation across FastAPI, Preact, MCP and host
+            application integration.
           </p>
           <p>
-            I partner with UX designers who supply Figma designs, bringing engineering judgment to
-            interaction design, state ownership, integration and implementation.
+            I partner with UX, product and backend teams to turn design intent
+            into a product that works through the difficult states. The engineer
+            accountable for a workflow should also understand the foundations it
+            stands on.
           </p>
-          <Link href="/#work" className={s.textLink}>
-            Explore my selected work <span aria-hidden="true">↗</span>
+          <p>
+            I set technical direction through shared foundations: a Storybook UI
+            library, TanStack Query, typed service contracts and a 70% backend
+            coverage gate. I use Codex and Claude in my development workflow;
+            architecture, review and validation remain engineering
+            responsibilities.
+          </p>
+          <Link className={s.textLink} href="/#work">
+            Explore selected work
+            <span aria-hidden="true">↗</span>
           </Link>
-          <div className={s.stats}>
-            <div>
-              <span>Focus</span>
-              <strong>Frontend architecture</strong>
+        </div>
+      </section>
+
+      <section className={s.approach} aria-labelledby="approach-title">
+        <div className={s.approachInner}>
+          <div className={s.approachLeft}>
+            <span className={s.label}>02 / Engineering approach</span>
+            <h2 id="approach-title">
+              Design at the <em>boundaries.</em>
+            </h2>
+            <div className={s.mapWrap}>
+              <SystemMap />
             </div>
-            <div>
-              <span>Current</span>
-              <strong>Principal Software Engineer, Nawiri</strong>
-            </div>
-            <div>
-              <span>Since</span>
-              <strong>2013</strong>
+          </div>
+
+          <div className={s.approachRight}>
+            <p className={s.lead}>
+              A component boundary is useful only if the <span>data</span>,{" "}
+              <span>state</span>, <span>responsibility</span> and{" "}
+              <span>ownership</span> behind it are clear.
+            </p>
+            <p>
+              My work spans frontend interactions, Rails integrations and
+              Python services. In Quick Builder, I worked on shared
+              accommodation usage, saved route boundaries and asynchronous
+              pricing. In Agent Assistant, I worked on typed streaming,
+              semantic discovery across Rails APIs and MCP, and the evidence
+              behind an availability claim.
+            </p>
+            <p>
+              My platform work applies the same discipline at a larger scale:
+              a shared UI library, TanStack Query, typed service contracts and
+              staged React, Tailwind and Vite migrations. The aim is leverage —
+              every product change starts from a stronger baseline.
+            </p>
+
+            <div className={s.notes}>
+              {notes.map((note) => (
+                <article className={s.note} key={note.index}>
+                  <span>{note.index}</span>
+                  <div>
+                    <h3>{note.title}</h3>
+                    <p>{note.body}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className={s.row}>
-        <div className={s.rowLeft}>
-          <span className={s.label}>
-            <b>02</b> Approach
-          </span>
-          <h2>
-            Lead through
-            <br />
-            the <em>work.</em>
-          </h2>
-        </div>
-        <div className={s.rowRight}>
-          <p className={s.lead}>
-            Make responsibilities explicit. Keep shared primitives useful and focused. Treat
-            accessibility, testing and recovery as part of the experience.
-          </p>
-          <p>
-            My modernization work includes React upgrades, shared primitives and leading the
-            migration from Moment.js to Day.js. These are practical investments in a codebase’s
-            ability to evolve.
-          </p>
-          <p>
-            I use Codex and Claude as development tools. That work is distinct from the AI-enabled
-            applications I design and engineer.
-          </p>
-          <div className={s.approachTags}>
-            <span>Boundaries before convenience</span>
-            <span>Accessibility by default</span>
-            <span>Recovery as design</span>
-          </div>
-        </div>
+      <section className={s.career} aria-labelledby="experience-title">
+        <CareerTimeline />
       </section>
 
-      <section className={s.row}>
-        <div className={s.rowLeft}>
-          <span className={s.label}>
-            <b>03</b> Experience
-          </span>
-          <h2>
-            A career
-            <br />
-            in <em>building.</em>
-          </h2>
+      <section className={s.toolkit} aria-labelledby="toolkit-title">
+        <div>
+          <span className={s.label}>04 / Toolkit</span>
+          <h2 id="toolkit-title">Toolkit</h2>
         </div>
-        <div className={s.experience}>
-          {career.map(([date, company, title], index) => (
-            <div className={s.job} key={company}>
-              <span className={s.jobDate}>{date}</span>
-              <h3>{company}</h3>
-              <span className={s.jobTitle}>{title}</span>
-              {index === 0 && (
-                <span className={s.now} aria-label="Current role">
-                  Now
-                </span>
-              )}
+        <div className={s.groups}>
+          {toolkit.map((group) => (
+            <div className={s.group} key={group.label}>
+              <h3>{group.label}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
       </section>
 
-      <section className={s.row}>
-        <div className={s.rowLeft}>
-          <span className={s.label}>
-            <b>04</b> Education
-          </span>
-          <h2>
-            <em>Foundations.</em>
-          </h2>
+      <section className={s.education} aria-labelledby="education-title">
+        <div>
+          <span className={s.label}>05 / Education</span>
+          <h2 id="education-title">Education</h2>
         </div>
-        <div className={s.education}>
-          <span className={s.school}>Tshwane University of Technology</span>
-          <div className={s.degree}>
-            <span>01</span>
-            <strong>BTech — IT, Web and Multimedia</strong>
+        <div className={s.school}>
+          <h3>Tshwane University of Technology</h3>
+          <div className={s.degrees}>
+            <p>BTech — IT, Web and Multimedia</p>
+            <p>National Diploma — IT, Web and Multimedia</p>
           </div>
-          <div className={s.degree}>
-            <span>02</span>
-            <strong>National Diploma — IT, Web and Multimedia</strong>
-          </div>
-          <span className={s.eduMark} aria-hidden="true">
-            TUT
-          </span>
         </div>
       </section>
 
-      <section className={s.cta}>
-        <span className={s.ctaLabel}>Next / Contact</span>
-        <h2>
-          Let’s <em>connect.</em>
-        </h2>
-        <div className={s.ctaRow}>
-          <a className={s.ctaEmail} href="mailto:Knyokolodi@gmail.com">
-            Knyokolodi@gmail.com <span aria-hidden="true">↗</span>
-          </a>
-          <a className={s.ctaCv} href="/Kagiso_Nyokolodi_CV.pdf" download>
-            Download CV <span aria-hidden="true">↓</span>
-          </a>
+      <section id="about-contact" className={s.cta}>
+        <div className={s.ctaInner}>
+          <span className={`${s.label} ${s.ctaLabel}`}>Contact</span>
+          <div className={s.ctaRow}>
+            <h2>Get in touch.</h2>
+            <div className={s.ctaBody}>
+              <p>
+                Principal Software Engineer and Frontend Lead.
+                <br />
+                Working across frontend architecture and applied AI for a
+                connected product portfolio.
+              </p>
+              <a
+                className={s.ctaButton}
+                href="mailto:Knyokolodi@gmail.com"
+              >
+                Start a conversation
+                <span aria-hidden="true">→</span>
+              </a>
+              <div className={s.ctaLinks}>
+                <a href="mailto:Knyokolodi@gmail.com">
+                  Knyokolodi@gmail.com ↗
+                </a>
+                <a href="/Kagiso_Nyokolodi_CV.pdf" download>
+                  Download CV ↓
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

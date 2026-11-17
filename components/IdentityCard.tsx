@@ -1,34 +1,68 @@
-import s from './IdentityCard.module.css';
+import s from "./IdentityCard.module.css";
 
 export function IdentityCard({ className }: { className?: string }) {
   return (
-    <div
-      className={`${s.card}${className ? ` ${className}` : ''}`}
-      role="img"
-      aria-label="Kagiso Nyokolodi identity card: Principal Software Engineer and Frontend Lead, working since 2013"
-    >
-      <div className={s.top}>
-        <span>KN / 001</span>
-        <span>2013 — Now</span>
-      </div>
-      <div className={s.middle}>
-        <span className={s.monogram} aria-hidden="true">
-          kn
+    <figure className={`${s.card}${className ? ` ${className}` : ""}`}>
+      <div className={s.chrome}>
+        <span className={s.file}>
+          <i aria-hidden="true" />
+          profile.ts
         </span>
-        <span className={s.seal} aria-hidden="true">
-          ↗
-        </span>
+        <span>TypeScript</span>
       </div>
-      <div className={s.name}>
-        <strong>Kagiso Nyokolodi</strong>
+
+      <div className={s.code}>
+        <div className={s.declaration}>
+          <span className={s.keyword}>const</span> engineer ={" "}
+          <span className={s.punct}>{"{"}</span>
+        </div>
+
+        <dl className={s.fields}>
+          <div>
+            <dt>role</dt>
+            <dd>
+              <span className={s.string}>
+                &quot;Principal Software Engineer&quot;
+              </span>
+              ,
+            </dd>
+          </div>
+          <div>
+            <dt>focus</dt>
+            <dd>
+              [<span className={s.string}>&quot;frontend architecture&quot;</span>
+              , <span className={s.string}>&quot;AI applications&quot;</span>],
+            </dd>
+          </div>
+          <div>
+            <dt>since</dt>
+            <dd>
+              <span className={s.number}>2013</span>,
+            </dd>
+          </div>
+          <div>
+            <dt>current</dt>
+            <dd>
+              <span className={s.string}>&quot;Nawiri&quot;</span>,
+            </dd>
+          </div>
+        </dl>
+
+        <div className={s.declaration}>
+          <span className={s.punct}>{"}"}</span>{" "}
+          <span className={s.keyword}>as const</span>;
+        </div>
+      </div>
+
+      <figcaption className={s.caption}>
+        <span>Kagiso Nyokolodi</span>
         <span>Principal Software Engineer</span>
+      </figcaption>
+
+      <div className={s.footer}>
+        <span>strict · ESM · React 19</span>
+        <span>Frontend × AI</span>
       </div>
-      <div className={s.foot}>
-        <span>Frontend Lead</span>
-        <span>Architecture ↔ Experience</span>
-      </div>
-      <span className={s.cornerA} aria-hidden="true" />
-      <span className={s.cornerB} aria-hidden="true" />
-    </div>
+    </figure>
   );
 }

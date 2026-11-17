@@ -1,23 +1,30 @@
-import Link from 'next/link';
-import s from './CaseStudy.module.css';
+import Link from "next/link";
+import type { ReactNode } from "react";
+import { CaseStudyNav } from "./CaseStudyNav";
+import s from "./CaseStudy.module.css";
 
 const sections = [
-  ['context', 'Context'],
-  ['role', 'My role'],
-  ['constraints', 'Constraints'],
-  ['decisions', 'Decisions / trade-offs'],
-  ['implementation', 'Implementation'],
-  ['evidence', 'Evidence / results'],
-  ['lessons', 'Lessons'],
-];
+  ["context", "The problem"],
+  ["role", "My responsibility"],
+  ["constraints", "The constraints"],
+  ["decisions", "Key decisions"],
+  ["implementation", "Delivery & validation"],
+  ["leverage", "Scope & leverage"],
+  ["evidence", "What changed"],
+  ["lessons", "Reflection"],
+] as const;
 
 type Props = {
   number: string;
   title: string;
   intro: string;
   discipline: string;
-  visual: React.ReactNode;
-  children: React.ReactNode;
+  scope: string;
+  status: string;
+  leverage: string;
+  outcomes: string[];
+  visual: ReactNode;
+  children: ReactNode;
   nextHref: string;
   nextTitle: string;
 };
@@ -27,6 +34,10 @@ export function CaseStudy({
   title,
   intro,
   discipline,
+  scope,
+  status,
+  leverage,
+  outcomes,
   visual,
   children,
   nextHref,
@@ -35,73 +46,69 @@ export function CaseStudy({
   return (
     <article className={s.case}>
       <div className={s.top}>
-        <Link href="/#work" className={s.back}>
-          ← All work
-        </Link>
-        <span className={s.count}>
-          Case study {number} / 02 <i>·</i> Nawiri
+        <Link href="/#work">← Index / Selected work</Link>
+        <span>
+          {number} / 03 · Nawiri
         </span>
       </div>
 
       <header className={s.heading}>
-        <span className={s.kicker}>
-          <b>Selected work</b> / {discipline}
-        </span>
+        <span className={s.kicker}>{discipline}</span>
         <h1>{title}</h1>
-        <div className={s.introRow}>
-          <p className={s.intro}>{intro}</p>
-          <dl className={s.facts}>
-            <div>
-              <dt>Ownership</dt>
-              <dd>Solution design, architecture &amp; implementation</dd>
-            </div>
-            <div>
-              <dt>Focus</dt>
-              <dd>{discipline}</dd>
-            </div>
-            <div>
-              <dt>Collaboration</dt>
-              <dd>UX team · Figma design input</dd>
-            </div>
-          </dl>
-        </div>
+        <p className={s.intro}>{intro}</p>
+        <dl className={s.facts}>
+          <div>
+            <dt>Responsibility</dt>
+            <dd>Solution design, architecture &amp; implementation</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>{scope}</dd>
+          </div>
+          <div>
+            <dt>Leverage</dt>
+            <dd>{leverage}</dd>
+          </div>
+          <div>
+            <dt>Project state</dt>
+            <dd>{status}</dd>
+          </div>
+        </dl>
       </header>
 
       <figure className={s.feature}>
-        <div className={s.featureBar}>
-          <span>Fig. {number} / System view</span>
-          <span>Original conceptual visual</span>
-        </div>
-        <div className={s.featureVisual}>{visual}</div>
-        <span className={s.cornerA} aria-hidden="true" />
-        <span className={s.cornerB} aria-hidden="true" />
+        <div className={s.featureInner}>{visual}</div>
+        <figcaption>
+          Conceptual illustration, simplified for this case study.
+        </figcaption>
       </figure>
+
+      <section className={s.outcomes} aria-label="At a glance">
+        <div className={s.outcomesHead}>
+          <span>At a glance</span>
+          <span>{number} / Outcomes</span>
+        </div>
+        <ul>
+          {outcomes.map((outcome, index) => (
+            <li key={outcome}>
+              <span aria-hidden="true">0{index + 1}</span>
+              <p>{outcome}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <div className={s.body}>
         <aside className={s.contents}>
-          <span className={s.contentsLabel}>In this case study</span>
-          <nav aria-label="Case study sections">
-            {sections.map(([id, name], index) => (
-              <a href={`#${id}`} key={id}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {name}
-              </a>
-            ))}
-          </nav>
-          <p>
-            Original conceptual visuals.
-            <br />
-            No proprietary screenshots.
-          </p>
+          <span>In this study</span>
+          <CaseStudyNav sections={sections} />
         </aside>
         <div className={s.prose}>{children}</div>
       </div>
 
       <Link className={s.next} href={nextHref}>
-        <div>
-          <span className={s.nextLabel}>Next case study</span>
-          <h2>{nextTitle}</h2>
-        </div>
+        <span className={s.nextLabel}>Next case study</span>
+        <h2>{nextTitle}</h2>
         <span className={s.nextArrow} aria-hidden="true">
           ↗
         </span>

@@ -1,0 +1,134 @@
+import { CaseStudy } from "@/components/CaseStudy";
+import { SystemsVisual } from "@/components/Visual";
+
+export const metadata = {
+  title: "Platform modernization",
+  description:
+    "Setting frontend platform direction across shared UI foundations, dependency sequencing and staged migrations.",
+  alternates: { canonical: "/work/modernization" },
+  openGraph: {
+    title: "Platform modernization — Kagiso Nyokolodi",
+    description:
+      "Setting frontend platform direction across Bazaruto, Wakala and Agent Assistant: shared foundations and staged migrations.",
+    type: "article",
+  },
+};
+
+<CaseStudy number="03" title="Platform modernization" intro="Setting the frontend platform direction across three applications: shared foundations that raise the baseline and staged migrations that keep established workflows intact." discipline="Technical strategy / Frontend platform" scope="Bazaruto, Wakala & Agent Assistant" status="Completed updates alongside ongoing compatibility and migration work" leverage="Storybook UI library · TanStack Query · staged migration" outcomes={['A React, TypeScript, Tailwind and Storybook UI library separates shared primitives from product-specific themes.', 'TanStack Query and reusable compound form components standardize data fetching, form behaviour and component-state coverage.', 'React 18/19, Webpacker-to-Shakapacker, Moment.js-to-Day.js and staged Vite work sequence runtime, tooling and product compatibility.']} visual={<SystemsVisual />} nextHref="/work/quick-builder" nextTitle="Quick Builder">
+
+<section id="context">
+
+## The problem
+
+An established application’s frontend stack is a connected system. A runtime change can affect test environments, a component upgrade can change types, and an asset pipeline migration can reach into Rails layouts. Product teams feel every one of those changes through the workflows they ship.
+
+Across Bazaruto, Wakala and Agent Assistant, I treat modernization as a platform and delivery problem: establish shared foundations, define the dependency order, make each step reviewable and preserve the product behaviours that justify the change.
+
+</section>
+
+<section id="role">
+
+## My responsibility
+
+I set the frontend platform direction and built the foundations other product work depends on: a React, TypeScript, Tailwind and Storybook UI library, a standard data-fetching approach with TanStack Query, and reusable compound form components with unit and state coverage.
+
+My implementation work spans React 18 and React 19 upgrades, Webpacker-to-Shakapacker migration, TypeScript compatibility, Moment.js-to-Day.js migration, dependency stages and a Vite migration. I structure related changes into reviewable steps and resolve the integration issues between runtime, tooling, build and product behaviour.
+
+Product work and platform work inform each other: the engineer accountable for a workflow should understand the platform beneath it, and a platform earns its keep when product teams can build on it.
+
+</section>
+
+<section id="constraints">
+
+## The constraints
+
+- Tooling has real version requirements and peer dependency boundaries.
+- Type and test environment changes can reveal assumptions in otherwise working code.
+- Framework styling changes affect existing drawers, notifications, forms and image pickers.
+- Date utilities reach formatting, calculations, UTC and time-zone handling across shared components.
+- An integrated migration needs evidence beyond successful dependency installation.
+- Multiple applications share patterns but not identical release paths.
+
+</section>
+
+<section id="decisions">
+
+## Key decisions
+
+### Build leverage before migrating
+
+I built the foundation of a React, TypeScript, Tailwind and Storybook UI library, separating shared primitives from product-specific themes and documenting variants, colour palettes and typography. I standardized frontend data fetching with TanStack Query and introduced reusable compound form components with unit tests, plus regression coverage for complex component states and interactions.
+
+This is the part of modernization that compounds. A migration changes the platform once; a shared UI library, data-fetching standard and form primitives change every product change that follows. The trade-off is upfront design and documentation work before the next feature can benefit, which is why it belongs to platform direction rather than a single migration ticket.
+
+### Sequence related upgrades without hiding their dependencies
+
+In Agent Assistant, I split the upgrade programme into lint and TypeScript preparation, test tooling, Preact, Markdown rendering, and local tooling stages.
+
+Preact element type changes were handled with the Preact upgrade. The Markdown work included clipboard rendering checks. Test tooling changes included the DOM environment and matchers they depended on. These boundaries make the reason for each change clearer during review, while preserving the order required for integration.
+
+### Put runtime and validation foundations before the asset pipeline
+
+In Wakala, I stacked the Vite migration on Node 24, ESLint 10 and Jest 30 changes. The work also restores TypeScript import analysis and includes a Rails asset layout regression check.
+
+This approach adds branch coordination, but makes prerequisites visible. It separates a runtime or lint compatibility issue from a change in how the application builds and serves its assets. The migration remains ongoing work rather than a claimed production rollout.
+
+### Treat rollback as evidence for the next iteration
+
+Bazaruto’s initial Bootstrap 5 upgrade was reverted. Follow-up compatibility work addresses product regressions, including notification and image picker styling, rather than treating the package update as completion.
+
+A separate staged Bootstrap-to-Tailwind migration covered shared components, navigation, authentication, availability and quote workflows, culminating in Bootstrap/Popper removal and Tailwind CSS v4 adoption. The contrast is the lesson: a dependency can install successfully while the product still needs compatibility work, and a staged migration needs somewhere to stop, revert or narrow before the next step.
+
+</section>
+
+<section id="implementation">
+
+## Delivery & validation
+
+Validation follows the boundary being changed: type checks for type migrations, lint checks for configuration changes, DOM and rendering tests for frontend behaviour, unit tests for compound form states and asset layout checks where the build reaches Rails.
+
+The Agent Assistant changes are represented as a staged upgrade sequence. Wakala’s integrated Vite work and Bazaruto’s Bootstrap compatibility work have additional acceptance and rollout considerations. Completion of one stage does not imply that every dependent migration is released.
+
+</section>
+
+<section id="leverage">
+
+## Scope & leverage
+
+The shared foundations are the durable outcome: a Storybook UI library that separates primitives from product themes, TanStack Query as the data-fetching standard, and compound form components with unit and state coverage. They give product teams a stronger starting point than any individual upgrade.
+
+The migration programme turns platform change into a sequence other engineers can review and continue: React 18/19, Webpacker-to-Shakapacker, TypeScript compatibility, Moment.js-to-Day.js and Vite, each with its own prerequisites and validation boundary.
+
+The rollback at Bazaruto is part of the design record, not an omission. It shows where compatibility was not yet established and what the follow-up work had to cover. The platform direction is only credible if it accounts for the products already running on it.
+
+</section>
+
+<section id="evidence">
+
+## What changed
+
+**Shared UI became a platform capability.** A React, TypeScript, Tailwind and Storybook library documents variants, palettes and typography, with shared primitives separated from product themes.
+
+**Data and forms gained a standard.** TanStack Query replaced ad hoc fetching; reusable compound form components and complex-state regression tests raised the baseline for product changes.
+
+**Upgrade intent became easier to review.** Related changes have explicit stages instead of one undifferentiated dependency update, across lint/TypeScript, test tooling, Preact, Markdown and local tooling.
+
+**Compatibility work reaches the actual consumers.** Preact element types, Markdown clipboard output, lint import analysis, date utilities and Rails asset layouts are part of the migration work.
+
+**The release boundary remains visible.** The staged work separates implementation progress from integration and rollout decisions, including the Bazaruto rollback and its follow-up compatibility work.
+
+</section>
+
+<section id="lessons">
+
+## Reflection
+
+Modernization needs a reason, a dependency order and a way to tell whether the product still works. The quality of the change is in how those pieces fit together, including the decision to stop, revert or narrow a step when compatibility is not established.
+
+The principal-level shift is to stop treating modernization as a version bump and start treating it as platform direction: what every team inherits, what each migration proves, and what the product can safely build next.
+
+> Keeping a platform current is a sequence of engineering decisions, not a single version bump.
+
+</section>
+
+</CaseStudy>

@@ -3,3 +3,7 @@ node_modules/
 .local-tools/
 evidence/
 *.tsbuildinfo
+
+.playwright-cli/
+
+output/playwright/

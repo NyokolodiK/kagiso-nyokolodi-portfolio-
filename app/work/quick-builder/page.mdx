@@ -1,96 +1,115 @@
-import {CaseStudy} from '@/components/CaseStudy'
-import {BuilderVisual} from '@/components/Visual'
+import { CaseStudy } from "@/components/CaseStudy";
+import { BuilderVisual } from "@/components/Visual";
 
-export const metadata={title:'Quick Builder',description:'Designing and engineering a modular itinerary workflow.'}
+export const metadata = {
+  title: "Quick Builder",
+  description:
+    "Leading a connected itinerary workflow, from frontend state ownership to route persistence and pricing.",
+  alternates: { canonical: "/work/quick-builder" },
+  openGraph: {
+    title: "Quick Builder — Kagiso Nyokolodi",
+    description:
+      "Leading a connected itinerary workflow across React, TypeScript and Rails: shared state, route persistence and asynchronous pricing.",
+    type: "article",
+  },
+};
 
-<CaseStudy number="01" title="Quick Builder" intro="A complex journey, made manageable. Designing and engineering a modular workflow for building travel itineraries." discipline="Frontend architecture · Product experience" visual={<BuilderVisual/>} nextHref="/work/agent-assistant" nextTitle="Agent Assistant">
+<CaseStudy number="01" title="Quick Builder" intro="Leading one itinerary across many connected decisions: the architecture and implementation behind a workflow that stays coherent as accommodation, activities and transport change." discipline="Product architecture / Frontend engineering" scope="React, TypeScript & Rails itinerary integration" status="Implemented workflow with continuing product development" leverage="Reusable providers · typed service contracts · regression coverage" outcomes={['Accommodation cleanup respects usage across itineraries, with an explained removal boundary.', 'Route edits connect persistence, itinerary refresh and asynchronous pricing.', 'Reusable providers, hooks and typed service contracts carry the workflow.']} visual={<BuilderVisual />} nextHref="/work/agent-assistant" nextTitle="Agent Assistant">
 
 <section id="context">
 
-## Context
+## The problem
 
-An itinerary is a connected set of decisions. Accommodation affects the shape of a trip; activities and transport need to fit around it. Quick Builder brings those decisions into a modular workflow without treating every step as an isolated form.
+Building a travel itinerary is more than filling in a sequence of forms. A stay changes the route. A route changes the transport. A saved change can trigger pricing work that finishes later.
 
-The engineering challenge was to preserve a coherent journey while making each part understandable and independently maintainable.
+Quick Builder brings accommodation, activities and transport into one journey. The challenge was to let each step evolve without losing the itinerary’s integrity across those dependencies.
 
 </section>
 
 <section id="role">
 
-## My role
+## My responsibility
 
-I led **solution design, architecture and end-to-end implementation** of Quick Builder. That included the structure of the workflow, frontend state and data boundaries, asynchronous feedback, accessibility and testing.
+I led **solution design, architecture and end-to-end implementation** across React/TypeScript and Rails. That covered the workflow structure, frontend state and data ownership, asynchronous feedback and integration with the underlying itinerary services.
 
-I collaborated with the UX team, who supply designs in Figma. My role connected that design input to the product’s interaction model and the engineering decisions needed to make it work.
+I partnered with UX designers working in Figma, translating their designs into interactions and engineering boundaries. My work extended into Rails service and API changes where a frontend feature depended on saved itinerary behaviour.
 
 </section>
 
 <section id="constraints">
 
-## Constraints
+## The constraints
 
-- Accommodation, activities and transport have distinct interactions, but belong to one itinerary.
-- Room feedback arrives asynchronously and needs a clear place in the experience.
-- Shared journey state must stay coherent without coupling every component to every other step.
-- A visually polished workflow still needs to work with a keyboard and support meaningful regression testing.
+- Accommodation belongs to a wider vacation context and can be used by another itinerary.
+- Transport routes have saved journey boundaries that must survive editing.
+- Saving a route and completing its pricing are separate events; their responses can arrive in different orders.
+- A change needs coverage across the screen, client services and backend persistence, with keyboard access and usable feedback throughout.
 
 </section>
 
 <section id="decisions">
 
-## Decisions / trade-offs
+## Key decisions
 
-### A modular workflow, a shared journey
+### Protect shared data beyond the current screen
 
-I structured the experience around accommodation, activity and transport steps. The boundary follows the user’s task, giving each step a clear responsibility while keeping itinerary-level concerns at the workflow level.
+An accommodation that looks unused in the current itinerary may still be used elsewhere. I made cleanup account for usage across itineraries as well as the current stay map.
 
-The trade-off is coordination: modules still need an explicit way to exchange the information that belongs to the journey. Clear ownership is more useful here than pretending the steps are entirely independent.
+The consequence is an explicit usage lookup and a narrower definition of what can be removed. A local view of the screen is insufficient authority for deleting shared vacation data. The workflow also explains why an accommodation cannot be removed.
 
-### Feedback belongs beside the decision
+### Give route saving and pricing separate lifecycles
 
-Asynchronous room feedback needs to be understandable in the context of room selection. Treating that feedback as part of the workflow makes the relationship between a user action and its eventual result clearer.
+Applying a route has two responsibilities: persist the selected journey and reconcile the resulting pricing state. Treating both as a single loading flag would hide the interval between a successful save and a completed price calculation.
 
-### Boundaries before convenience
+I introduced dedicated route-save and pricing coordination. The implementation tracks pricing completions and can read the current server state when a completion arrives before the save response. This adds coordination, but gives the interface a way to reconcile an actual race rather than assume a fixed response order.
 
-State and data ownership were architectural decisions. Shared information belongs at the appropriate coordination boundary; step-specific interaction state stays close to the step that owns it.
+### Preserve journey boundaries when editing
 
-> The interface should explain the journey. The architecture should explain who owns each part.
+Route review needs to operate on the correct saved section of an itinerary. My changes spanned the drawer, route data model, API and transfer services, with coverage for saved boundaries and lookup failures.
+
+This kept the interaction tied to the journey the user was editing. The responsibility crossed the frontend/backend boundary because that is where the feature’s correctness lived.
 
 </section>
 
 <section id="implementation">
 
-## Implementation
+## Delivery & validation
 
-The implementation connected the modular itinerary workflow to its underlying data, with focused boundaries between the accommodation, activity and transport experiences.
+The frontend separates accommodation, activity, transport, review and pricing responsibilities. Shared itinerary concerns sit at the coordination boundary; step-specific interactions stay with their step.
 
-Accessibility and testing were part of that implementation work: navigation, controls and feedback need to remain understandable as the workflow changes. Testing the connections between steps matters as much as testing a single isolated component.
+The implementation includes regression tests for accommodation usage, route selection and saving, lookup failures, and pricing transitions. Rails controller and service specs cover route persistence and journey boundaries. This coverage connects user actions to saved behaviour instead of relying solely on isolated component output.
 
-The illustration above is an original conceptual representation of these ideas. It is not a screenshot of the internal product.
+</section>
+
+<section id="leverage">
+
+## Scope & leverage
+
+The workflow is assembled from reusable providers, hooks and typed service contracts rather than screen-local state. That makes the itinerary boundary explicit and gives later changes a stable place to attach.
+
+The leverage is cumulative: regression tests cover accommodation usage, route selection and saving, lookup failures and pricing transitions, while Rails controller and service specs cover journey persistence. The work also extended into Rails services and APIs where a frontend feature depended on saved itinerary behaviour — cross-boundary ownership that outlives the feature, with shared state and service contracts other itinerary flows can reuse.
 
 </section>
 
 <section id="evidence">
 
-## Evidence / results
+## What changed
 
-The grounded technical outcomes are the workflow itself and the engineering boundaries that support it:
+**Cleanup became aware of the wider data model.** Accommodations used by another itinerary are excluded from the removable set, with an explanation in the interface.
 
-- A modular itinerary experience spanning accommodation, activities and transport.
-- Asynchronous room feedback connected to the selection experience.
-- Deliberate state and data boundaries across the journey.
-- Accessibility and testing included in the implementation.
+**Route editing became a connected product operation.** A selected route can be applied through the backend, reflected in the itinerary and reconciled with asynchronous pricing.
 
+**The workflow became a reusable foundation.** Providers, hooks and typed service contracts now carry the itinerary boundary, and regression coverage connects user actions to saved behaviour.
 
 </section>
 
 <section id="lessons">
 
-## Lessons
+## Reflection
 
-A modular interface only remains modular when its state follows the same boundaries. Breaking a screen into components is the easy part; deciding which information belongs to a step and which belongs to the journey is the more consequential design work.
+The most consequential frontend decisions often sit outside the component. In Quick Builder, deciding who owns shared data, what a save actually guarantees, and when pricing is complete mattered as much as the screen structure.
 
-Asynchronous behavior also deserves first-class design attention. A response that arrives later is still part of the user’s current decision.
+> A workflow is only as coherent as the state transitions between its steps.
 
 </section>
 

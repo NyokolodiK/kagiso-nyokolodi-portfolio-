@@ -1,0 +1,44 @@
+.nav {
+  display: grid;
+  gap: 2px;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+}
+
+.nav a {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 10px;
+  padding: 9px 8px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.nav a span {
+  font: 8px/1.8 var(--mono);
+  color: var(--faint);
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  background: rgb(255 255 255 / 0.025);
+  color: var(--ink);
+}
+
+.nav a.active {
+  border-color: rgb(var(--signal-rgb) / 0.24);
+  background: rgb(var(--signal-rgb) / 0.06);
+  color: var(--signal-soft);
+}
+
+.nav a.active span {
+  color: var(--signal);
+}

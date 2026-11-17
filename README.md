@@ -1,42 +1,45 @@
 # Kagiso Nyokolodi — Portfolio
 
-Standalone local portfolio built with Next.js App Router, TypeScript, CSS Modules and MDX. All pages are pre-rendered. No database, authentication, analytics, remote font requests or custom client components.
+A local portfolio built with Next.js App Router, TypeScript, CSS Modules and MDX. Home, About and three case studies are pre-rendered. Fonts are self-hosted; there are no analytics, authentication or databases. A small number of isolated client components power the interactive pieces.
 
-The visual direction is a dark engineering studio: near-black canvas, oversized Space Grotesk display type, electric lime accent, mono micro-labels, visible grid rules and high-contrast project cards.
+The design is a dark agent-runtime system: near-black surfaces, electric blue and mint signal accents, hairline grids, rounded glass and console panels, and live status dots. Oversized Archivo Variable display headings are paired with IBM Plex Sans for reading and IBM Plex Mono for metadata, giving the interface an engineered, technical tone. Mint carries primary actions with dark text; blue remains a supporting accent for links, rules and labels. The home hero centres on a large 3D system map: four layered plates that orbit by pointer drag, snap back to a reset view, and can be selected by click or keyboard to inspect the contract behind each one. A conceptual five-step execution trace above the map frames the visual language: read context, plan, call tools, check evidence, respond. A separate interaction lab further down the page walks through a frontend workflow and an AI-assisted flow using local sample data. Both demonstrations run in the browser and make no API calls. Content focuses on engineering decisions, implementation outcomes and the scope of responsibility.
 
 ## Run
-
-Requires Node.js 20.9+ (tested with 24.11).
 
 ```sh
 npm install --cache .local-tools/npm-cache
 npm run dev
 ```
 
-Open http://127.0.0.1:3000. For a production preview: `npm run build && npm start`.
+Use the printed local URL. For a production preview, run `npm run build` followed by `npm run start`. Add `-- --port 3001` when another app occupies port 3000.
+
+Set `NEXT_PUBLIC_SITE_URL` at build time to override the canonical origin used by metadata, the sitemap and robots.
 
 ## Validate
 
 ```sh
-npm run typecheck
 npm run lint
+npm run typecheck
 npm run build
 ```
 
+Browser QA notes are in `VALIDATION.md`. Captures belong in `output/playwright/`.
+
 ## Content
 
-- Homepage: `app/page.tsx` and `app/page.module.css`
-- Career and education: `app/about/page.tsx` and `app/about/about.module.css`
-- Case studies: `app/work/*/page.mdx`
-- Shared tokens and base styles: `app/globals.css`
-- Header and footer: `components/Shell.tsx`
-- Case-study shell and contents rail: `components/CaseStudy.tsx`
-- Paper identity card: `components/IdentityCard.tsx`
-- Original conceptual visuals: `components/Visual.tsx`
-- CV: `public/Kagiso_Nyokolodi_CV.pdf` (Library version 3)
+- `app/page.tsx`: introduction, 3D system map, selected work, interaction lab, principal practice and contact.
+- `app/about/page.tsx`: profile, approach, supplied career history and education.
+- `app/work/*/page.mdx`: Quick Builder, Agent Assistant and platform modernization.
+- `app/layout.tsx`: Archivo Variable, IBM Plex Sans/IBM Plex Mono, metadata, Person JSON-LD and viewport theme.
+- `app/opengraph-image.tsx`: generated 1200×630 social card.
+- `app/sitemap.ts` and `app/robots.ts`: crawl metadata built from `lib/site.ts`.
+- `app/globals.css`: shared design tokens, typography, reduced-motion rules.
+- `components/SystemStack.tsx`: draggable 3D system-map explorer used in the hero.
+- `components/engineering-lab/`: isolated interactive frontend/AI demonstration.
+- `components/CaseStudy.tsx`: common study structure and navigation.
+- `components/Visual.tsx`: original conceptual illustrations; no proprietary screenshots.
+- `public/Kagiso_Nyokolodi_CV.pdf`: CV with employment dates corrected to match the user’s supplied timeline.
 
-Visuals are original conceptual illustrations, not product screenshots. Case studies describe supplied technical ownership and outcomes without invented quantitative impact, testimonials or private repository links. Agent Assistant is described as evolving work. TanStack migration is not claimed as shipped.
+`CONTENT_SOURCES.md` records the local evidence behind the case studies. Career facts and ownership come from the supplied portfolio. Technical examples are grounded in project source and history. No quantitative impact, team size, mentoring history or testimonials have been invented. Ongoing migrations and acceptance work are distinguished from implemented behaviour.
 
-Fonts are self-hosted via Fontsource: Space Grotesk Variable for display type, DM Sans for body copy, IBM Plex Mono for labels and Instrument Serif for italic accents. Native anchor links, download links and pre-rendered content keep interaction lightweight. Browser validation records live in `VALIDATION.md`. Nothing is deployed or published.
-
-Tooling compatibility: TypeScript is pinned to 6.0.3 because typescript-eslint does not yet support TypeScript 7. ESLint is pinned to 9.39.5 to satisfy the current Next.js React/import/accessibility plugin peer ranges; npm marks that ESLint major unsupported. Recheck these upstream ranges before upgrading.
+This repository has not been deployed or published as part of the redesign.
