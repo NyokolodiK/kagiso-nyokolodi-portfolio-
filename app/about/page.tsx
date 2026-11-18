@@ -8,20 +8,20 @@ import { CareerTimeline } from "@/components/CareerTimeline";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Kagiso Nyokolodi: Principal Software Engineer and Frontend Lead. Architecture, applied AI and delivery across a connected product portfolio.",
+    "Kagiso Nyokolodi: Principal Software Engineer. Frontend architecture, applied AI and delivery across a connected product portfolio.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About — Kagiso Nyokolodi",
     description:
-      "Principal Software Engineer and Frontend Lead: architecture, applied AI and delivery across a connected product portfolio.",
+      "Principal Software Engineer: frontend architecture, applied AI and delivery across a connected product portfolio.",
     type: "website",
   },
 };
 
 const heroFacts = [
-  ["Discipline", "Frontend leadership"],
+  ["Level", "Principal"],
+  ["Discipline", "Frontend architecture"],
   ["Practice", "Applied AI"],
-  ["Scope", "Product portfolio"],
   ["Building since", "2013"],
 ];
 
@@ -38,12 +38,12 @@ const notes = [
   },
   {
     index: "03",
-    title: "Leverage",
+    title: "Foundations",
     body: "Turn repeated product problems into shared foundations: a UI library, data-fetching standard, typed contracts and a coverage gate.",
   },
   {
     index: "04",
-    title: "Capability",
+    title: "Teaching",
     body: "Raise the bar through review, tests and shared patterns, and make the work teachable across product teams.",
   },
 ];
@@ -97,19 +97,19 @@ export default function About() {
       <section className={s.hero} aria-labelledby="about-title">
         <div className={s.heroTop}>
           <span className={s.label}>Profile / Kagiso Nyokolodi</span>
-          <span className={s.heroIndex}>Index / 02</span>
+          <span className={s.heroIndex}>About / 2026</span>
         </div>
 
         <h1 id="about-title">
-          Frontend leadership,
+          Built for the
           <br />
-          <em>end to end.</em>
+          <em>difficult states.</em>
         </h1>
 
         <div className={s.heroBottom}>
           <p>
-            Principal Software Engineer and Frontend Lead. I set architecture
-            and delivery across internal operations, partner portals and
+            Principal Software Engineer. I set frontend architecture and
+            delivery across internal operations, partner portals and
             traveller-facing products.
           </p>
           <dl className={s.heroFacts}>
@@ -131,22 +131,22 @@ export default function About() {
         <div className={s.bio}>
           <span className={s.label}>01 / Profile</span>
           <h2>
-            Frontend leadership
+            Architecture and
             <br />
-            and product engineering.
+            product engineering.
           </h2>
           <p className={s.bioLead}>
             My work covers internal travel operations, partner portals and
-            traveller-facing products. I set architecture and standards as well
-            as shipping the interface. I care about what happens between a
+            traveller-facing products. I set the architecture and standards, and
+            I still ship the interface. I care about what happens between a
             user’s action and the system’s response, especially when that
             response is delayed, incomplete or shared across services.
           </p>
           <p>
-            At Nawiri, I led Quick Builder’s solution design, architecture and
-            end-to-end implementation. I also lead Agent Assistant’s
-            architecture and implementation across FastAPI, Preact, MCP and host
-            application integration.
+            As principal at Nawiri, I led Quick Builder’s solution design,
+            architecture and end-to-end implementation. I also lead Agent
+            Assistant’s architecture and implementation across FastAPI, Preact,
+            MCP and host application integration.
           </p>
           <p>
             I partner with UX, product and backend teams to turn design intent
@@ -163,12 +163,16 @@ export default function About() {
           </p>
           <Link className={s.textLink} href="/#work">
             Explore selected work
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </section>
 
-      <section className={s.approach} aria-labelledby="approach-title">
+      <section
+        id="approach"
+        className={s.approach}
+        aria-labelledby="approach-title"
+      >
         <div className={s.approachInner}>
           <div className={s.approachLeft}>
             <span className={s.label}>02 / Engineering approach</span>
@@ -197,8 +201,8 @@ export default function About() {
             <p>
               My platform work applies the same discipline at a larger scale:
               a shared UI library, TanStack Query, typed service contracts and
-              staged React, Tailwind and Vite migrations. The aim is leverage —
-              every product change starts from a stronger baseline.
+              staged React, Tailwind and Vite migrations. The aim is a stronger
+              baseline — every product change starts from there.
             </p>
 
             <div className={s.notes}>
@@ -260,21 +264,18 @@ export default function About() {
             <h2>Get in touch.</h2>
             <div className={s.ctaBody}>
               <p>
-                Principal Software Engineer and Frontend Lead.
+                Principal Software Engineer.
                 <br />
-                Working across frontend architecture and applied AI for a
-                connected product portfolio.
+                Frontend architecture and applied AI for a connected product
+                portfolio.
               </p>
-              <a
-                className={s.ctaButton}
-                href="mailto:Knyokolodi@gmail.com"
-              >
+              <a className={s.ctaButton} href="mailto:knyokolodi@gmail.com">
                 Start a conversation
                 <span aria-hidden="true">→</span>
               </a>
               <div className={s.ctaLinks}>
-                <a href="mailto:Knyokolodi@gmail.com">
-                  Knyokolodi@gmail.com ↗
+                <a href="mailto:knyokolodi@gmail.com">
+                  knyokolodi@gmail.com ↗
                 </a>
                 <a href="/Kagiso_Nyokolodi_CV.pdf" download>
                   Download CV ↓

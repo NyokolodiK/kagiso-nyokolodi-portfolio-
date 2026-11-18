@@ -33,7 +33,7 @@ export default function NotFound() {
             <div className={s.links}>
               <Link href="/#work" className={s.primary}>
                 Selected work
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true">→</span>
               </Link>
               <Link href="/" className={s.ghost}>
                 Home

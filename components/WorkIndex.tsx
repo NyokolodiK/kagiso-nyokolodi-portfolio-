@@ -21,7 +21,7 @@ const projects = [
     leverage:
       "Reusable providers, hooks and typed service contracts now carry the workflow.",
     tags: ["React", "TypeScript", "Rails"],
-    status: "Implemented workflow",
+    status: "Implemented — continuing",
     visual: <BuilderVisual />,
   },
   {
@@ -35,7 +35,7 @@ const projects = [
     leverage:
       "Typed SSE, host bridges and an evaluation suite make the assistant a platform boundary.",
     tags: ["FastAPI", "Preact", "MCP"],
-    status: "Evolving application",
+    status: "In progress — live availability",
     visual: <AgentVisual />,
   },
   {
@@ -76,7 +76,7 @@ export function WorkIndex() {
               <p className={s.line}>{item.line}</p>
               <p className={s.summary}>{item.summary}</p>
               <p className={s.leverage}>
-                <span>Leverage</span>{" "}
+                <span>Foundations</span>{" "}
                 {item.leverage}
               </p>
               <ul className={s.tags} aria-label="Technologies">
@@ -86,7 +86,7 @@ export function WorkIndex() {
               </ul>
             </div>
             <span className={s.arrow} aria-hidden="true">
-              ↗
+              →
             </span>
           </Link>
         ))}
@@ -94,7 +94,7 @@ export function WorkIndex() {
 
       <aside className={s.stage} aria-hidden="true">
         <div className={s.stageHead}>
-          <span>Live index / 0{active + 1}</span>
+          <span>Project index / 0{active + 1}</span>
           <span>{project.status}</span>
         </div>
         <div className={s.visual} key={active}>
@@ -102,7 +102,7 @@ export function WorkIndex() {
         </div>
         <div className={s.stageFoot}>
           <span>{project.title}</span>
-          <span>Conceptual system view</span>
+          <span>Conceptual model</span>
         </div>
       </aside>
     </div>

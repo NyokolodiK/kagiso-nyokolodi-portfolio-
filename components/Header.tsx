@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import s from "./Header.module.css";
 
 const nav = [
-  { href: "/#work", label: "Work", index: "01" },
-  { href: "/#lab", label: "Lab", index: "02" },
-  { href: "/about", label: "About", index: "03" },
-  { href: "/#contact", label: "Contact", index: "04" },
+  { href: "/#work", label: "Work" },
+  { href: "/#lab", label: "Lab" },
+  { href: "/about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -57,7 +57,6 @@ export function Header() {
                     : undefined
                 }
               >
-                <span aria-hidden="true">{item.index}</span>
                 {item.label}
               </Link>
             ))}
@@ -70,7 +69,7 @@ export function Header() {
             </span>
             <Link className={s.cta} href="/#contact">
               Get in touch
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">→</span>
             </Link>
             <button
               type="button"
@@ -102,14 +101,13 @@ export function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
               >
-                <span aria-hidden="true">{item.index}</span>
                 {item.label}
-                <i aria-hidden="true">↗</i>
+                <i aria-hidden="true">→</i>
               </Link>
             ))}
           </nav>
           <div className={s.panelMeta}>
-            <a href="mailto:Knyokolodi@gmail.com">Knyokolodi@gmail.com</a>
+            <a href="mailto:knyokolodi@gmail.com">knyokolodi@gmail.com</a>
             <a href="/Kagiso_Nyokolodi_CV.pdf" download>
               Download CV ↓
             </a>

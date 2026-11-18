@@ -277,7 +277,7 @@ export function SystemStack() {
             >
               <span>{item.index}</span>
               {item.name}
-              <i aria-hidden="true">↗</i>
+              <i aria-hidden="true">→</i>
             </button>
           ))}
         </nav>

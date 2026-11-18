@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { EngineeringLab } from "@/components/engineering-lab/EngineeringLab";
+import { IdentityCard } from "@/components/IdentityCard";
 import { SystemStack } from "@/components/SystemStack";
 import { WorkIndex } from "@/components/WorkIndex";
 import s from "./page.module.css";
@@ -12,22 +13,22 @@ export const metadata: Metadata = {
 const principles = [
   {
     number: "01",
-    title: "Set direction.",
-    body: "I turn product strategy into frontend architecture, standards and a delivery path across internal travel operations, partner portals and traveller-facing products.",
+    title: "Set the direction.",
+    body: "I turn product strategy into architecture, standards and a delivery path across internal travel operations, partner portals and traveller-facing products.",
   },
   {
     number: "02",
-    title: "Architect across seams.",
-    body: "I own the contracts across React/TypeScript interfaces, Rails APIs, FastAPI services and MCP tools. I treat state ownership, evidence and failure modes as part of the feature.",
+    title: "Design the seams.",
+    body: "I own the contracts across React and TypeScript interfaces, Rails APIs, FastAPI services and MCP tools. I treat state ownership, evidence and failure modes as part of the feature.",
   },
   {
     number: "03",
-    title: "Build leverage.",
+    title: "Build the foundations.",
     body: "I turn repeated product problems into shared foundations: a Storybook UI library, TanStack Query, compound forms, typed service contracts and a 70% backend coverage gate.",
   },
   {
     number: "04",
-    title: "Develop capability.",
+    title: "Make it teachable.",
     body: "I raise the bar through review, tests and shared patterns, and make the work teachable. I have mentored junior developers and supported multiple delivery streams.",
   },
 ];
@@ -63,21 +64,22 @@ export default function Home() {
 
         <div className={s.heroInner}>
           <div className={s.heroMeta}>
-            <span className={s.heroRole}>
-              Principal software engineer / Frontend leadership × AI
-            </span>
+            <span className={s.heroRole}>Portfolio / 2026</span>
             <span className={s.status}>
               <i aria-hidden="true" />
               Open to principal frontend roles
             </span>
-            <span className={s.heroYear}>Portfolio / 2026</span>
+            <span className={s.heroYear}>Johannesburg / ZA</span>
           </div>
 
           <div className={s.heroLead}>
             <div className={s.heroTitleWrap}>
-              <span className={s.heroIndex} aria-hidden="true">
-                00
-              </span>
+              <div className={s.heroKicker}>
+                <span className={s.heroLevel}>Principal Software Engineer</span>
+                <span className={s.heroDiscipline}>
+                  Frontend architecture × applied AI
+                </span>
+              </div>
               <h1 id="home-title">
                 Frontend systems
                 <br />
@@ -89,11 +91,11 @@ export default function Home() {
 
             <div className={s.heroAside}>
               <p className={s.intro}>
-                I’m Kagiso Nyokolodi, a Principal Software Engineer. I lead
-                frontend engineering across internal travel operations, partner
-                portals and traveller-facing products. I set the architecture,
-                standards and delivery path for React and TypeScript interfaces,
-                Python services and the contracts between them.
+                I lead frontend engineering across internal travel operations,
+                partner portals and traveller-facing products. I set the
+                architecture, standards and delivery path for React and
+                TypeScript interfaces, the Python and Rails services behind
+                them, and the contracts between each layer.
               </p>
 
               <div className={s.actions}>
@@ -101,51 +103,22 @@ export default function Home() {
                   View case studies
                   <span aria-hidden="true">↓</span>
                 </Link>
-                <Link className={s.secondary} href="/about">
+                <Link className={s.secondary} href="/about#approach">
                   Engineering approach
-                  <span aria-hidden="true">↗</span>
+                  <span aria-hidden="true">→</span>
                 </Link>
               </div>
 
               <p className={s.heroAsideFoot}>
-                Frontend direction / architecture / applied AI
+                Architecture / delivery / applied AI
               </p>
             </div>
           </div>
 
-          <ol className={s.trace} aria-label="Conceptual agent execution trace">
-            <li className={s.traceHead} aria-hidden="true">
-              <span>Trace</span>
-              <i />
-              <span>05 steps</span>
-            </li>
-            {trace.map((step) => (
-              <li key={step.index}>
-                <span className={s.traceDot} aria-hidden="true" />
-                <span className={s.traceIndex}>{step.index}</span>
-                <span className={s.traceLabel}>{step.label}</span>
-                <span className={s.traceMeta}>{step.meta}</span>
-              </li>
-            ))}
-          </ol>
-
-          <div className={s.explorer}>
-            <div className={s.explorerHead}>
-              <span className={s.label}>
-                <span>01</span>
-                Runtime map
-              </span>
-              <span className={s.explorerNote}>
-                Conceptual system · drag to orbit · select a layer
-              </span>
-            </div>
-            <SystemStack />
-          </div>
-
           <dl className={s.facts}>
             <div>
-              <dt>Experience</dt>
-              <dd>Since 2013</dd>
+              <dt>Level</dt>
+              <dd>Principal since 2022</dd>
             </div>
             <div>
               <dt>Scope</dt>
@@ -153,7 +126,7 @@ export default function Home() {
             </div>
             <div>
               <dt>Systems</dt>
-              <dd>Quick Builder · Agent Assistant · modernization</dd>
+              <dd>Quick Builder · Agent Assistant · platform</dd>
             </div>
             <div>
               <dt>Foundations</dt>
@@ -165,7 +138,7 @@ export default function Home() {
         <div className={s.heroFoot}>
           <span>Interfaces / state / contracts</span>
           <span className={s.heroRule} aria-hidden="true" />
-          <span>Scroll to inspect</span>
+          <span>Selected work below</span>
           <span aria-hidden="true">↓</span>
         </div>
       </section>
@@ -185,7 +158,7 @@ export default function Home() {
       <section id="work" className={s.work} aria-labelledby="work-title">
         <header className={`${s.workHead} reveal`}>
           <span className={s.label}>
-            <span>02</span>
+            <span>01</span>
             Selected work
           </span>
           <div className={s.headRow}>
@@ -193,12 +166,46 @@ export default function Home() {
               Case <em>studies.</em>
             </h2>
             <p>
-              Three problems I owned at Nawiri: shared itinerary state, AI tool
-              contracts and the frontend platform behind both.
+              Three problems I owned as principal at Nawiri: shared itinerary
+              state, AI tool contracts and the platform foundations that carry
+              them.
             </p>
           </div>
         </header>
         <WorkIndex />
+      </section>
+
+      <section id="system" className={s.system} aria-labelledby="system-title">
+        <div className={s.systemInner}>
+          <div className={s.systemHead}>
+            <span className={s.label}>
+              <span>02</span>
+              System map
+            </span>
+            <span className={s.explorerNote}>
+              Conceptual model · drag to orbit · select a layer
+            </span>
+          </div>
+          <h2 id="system-title" className="sr-only">
+            System map
+          </h2>
+          <SystemStack />
+          <ol className={s.trace} aria-label="Conceptual flow through the system">
+            <li className={s.traceHead} aria-hidden="true">
+              <span>Conceptual flow</span>
+              <i />
+              <span>05 steps</span>
+            </li>
+            {trace.map((step) => (
+              <li key={step.index}>
+                <span className={s.traceDot} aria-hidden="true" />
+                <span className={s.traceIndex}>{step.index}</span>
+                <span className={s.traceLabel}>{step.label}</span>
+                <span className={s.traceMeta}>{step.meta}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       <section id="lab" className={s.live} aria-labelledby="live-title">
@@ -252,9 +259,9 @@ export default function Home() {
               How I <em>lead.</em>
             </h2>
             <p>
-              I lead through direction, architecture, leverage and delivery —
-              carrying a feature through the system and leaving foundations the
-              next change can build on.
+              Principal work is not more code. It is the direction, architecture
+              and foundations that let a delivery path stay coherent — and the
+              judgement to keep it honest when the product changes.
             </p>
           </div>
 
@@ -272,12 +279,12 @@ export default function Home() {
         </div>
 
         <div className={s.manifesto}>
-          <span>System invariant</span>
+          <span>Working principle</span>
           <blockquote>
             “A workflow is only as coherent as the state transitions between its
             steps.”
           </blockquote>
-          <span>Quick Builder / case study</span>
+          <span>Quick Builder / reflection</span>
         </div>
       </section>
 
@@ -288,10 +295,14 @@ export default function Home() {
             Profile
           </span>
           <h2 id="about-preview-title">
-            Frontend leadership,
+            Principal scope,
             <br />
             <em>end to end.</em>
           </h2>
+        </div>
+
+        <div className={s.aboutCard}>
+          <IdentityCard />
         </div>
 
         <div className={s.aboutBody}>
@@ -301,16 +312,14 @@ export default function Home() {
             services and the Rails integrations behind them.
           </p>
           <p>
-            I partner with UX, product and backend teams to turn design intent
-            into a product that works through the difficult states. I set
-            technical direction through shared foundations: a Storybook UI
-            library, TanStack Query, typed service contracts and a 70% backend
-            coverage gate. The engineer accountable for a workflow should also
-            understand the foundations it stands on.
+            I set technical direction through shared foundations — a Storybook
+            UI library, TanStack Query, typed service contracts and a 70%
+            backend coverage gate — and stay close enough to the code to keep
+            those foundations honest.
           </p>
           <Link className={s.textLink} href="/about">
             More about my approach
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
 
@@ -337,20 +346,20 @@ export default function Home() {
           <div>
             <h2 id="contact-title">Let’s talk about frontend systems.</h2>
             <p>
-              Open to principal frontend and frontend architecture roles,
-              product engineering and AI application work.
+              Open to principal frontend, frontend architecture and applied-AI
+              roles.
             </p>
           </div>
         </div>
 
-        <a className={s.email} href="mailto:Knyokolodi@gmail.com">
-          Knyokolodi@gmail.com
+        <a className={s.email} href="mailto:knyokolodi@gmail.com">
+          knyokolodi@gmail.com
           <span aria-hidden="true">↗</span>
         </a>
 
         <div className={s.contactFoot}>
           <p>
-            Architecture, product engineering,
+            Architecture, delivery,
             <br />
             and the details that make them work.
           </p>

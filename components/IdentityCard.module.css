@@ -16,7 +16,7 @@
   border-bottom: 1px solid var(--line);
   background: rgb(5 8 12 / 0.5);
   color: var(--faint);
-  font: 8px/1.4 var(--mono);
+  font: 0.625rem/1.4 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
@@ -47,7 +47,7 @@
       transparent 40%
     ),
     var(--paper);
-  font: 12px/1.8 var(--mono);
+  font: 0.75rem/1.8 var(--mono);
 }
 
 .declaration {
@@ -101,12 +101,12 @@
 }
 
 .caption span:first-child {
-  font: 500 19px/1.2 var(--display);
+  font: 500 1.1875rem/1.2 var(--display);
   letter-spacing: -0.03em;
 }
 
 .caption span:last-child {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 
@@ -117,7 +117,7 @@
   padding: 10px clamp(20px, 2.6vw, 28px);
   border-top: 1px solid var(--line);
   background: rgb(5 8 12 / 0.35);
-  font: 9px/1.4 var(--mono);
+  font: 0.625rem/1.4 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--faint);
@@ -129,7 +129,7 @@
 
 @media (max-width: 620px) {
   .code {
-    font-size: 11px;
+    font-size: 0.6875rem;
   }
   .fields > div {
     grid-template-columns: 52px minmax(0, 1fr);

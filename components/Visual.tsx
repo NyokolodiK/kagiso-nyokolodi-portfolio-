@@ -161,7 +161,7 @@ export function SystemsVisual() {
               <strong>{title}</strong>
               <small>{detail}</small>
             </div>
-            <i aria-hidden="true">{index === steps.length - 1 ? "↗" : "↓"}</i>
+            <i aria-hidden="true">{index === steps.length - 1 ? "→" : "↓"}</i>
           </div>
         ))}
       </div>

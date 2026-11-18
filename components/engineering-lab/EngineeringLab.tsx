@@ -124,7 +124,7 @@ export function EngineeringLab() {
                   </p>
                   {selection.step === 3 && (
                     <span className={s.actionPreview}>
-                      Review stay <span aria-hidden="true">↗</span>
+                      Review stay <span aria-hidden="true">→</span>
                     </span>
                   )}
                 </div>

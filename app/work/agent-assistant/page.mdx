@@ -14,7 +14,7 @@ export const metadata = {
   },
 };
 
-<CaseStudy number="02" title="Agent Assistant" intro="Leading an embeddable AI travel-planning experience: the architecture and contracts that turn a streamed conversation into product actions, grounded recommendations and recoverable failure." discipline="AI applications / Cross-service architecture" scope="FastAPI, Preact, OpenAI, MCP & host bridges" status="Evolving application; live availability rollout requires coordinated acceptance" leverage="Typed streaming · semantic discovery · LLM evaluation suite" outcomes={['Streamed prose, product cards, dates and next steps have separate typed contracts.', 'Semantic discovery across Rails APIs, MCP and the assistant has explicit retrieval and product-card boundaries.', 'Structured-itinerary validation and a help-assistant track extend the LLM evaluation suite, alongside a 70% backend test-coverage gate.']} visual={<AgentVisual />} nextHref="/work/modernization" nextTitle="Platform modernization">
+<CaseStudy number="02" title="Agent Assistant" intro="Leading an embeddable AI travel-planning experience: the architecture and contracts that turn a streamed conversation into product actions, grounded recommendations and recoverable failure." discipline="AI applications / Cross-service architecture" scope="FastAPI, Preact, OpenAI, MCP & host bridges" responsibility="Principal ownership — architecture & implementation" status="In progress — live availability rollout across services" leverage="Typed streaming · semantic discovery · LLM evaluation suite" outcomes={['Streamed prose, product cards, dates and next steps have separate typed contracts.', 'Semantic discovery across Rails APIs, MCP and the assistant has explicit retrieval and product-card boundaries.', 'Structured-itinerary validation and a help-assistant track extend the LLM evaluation suite, alongside a 70% backend test-coverage gate.']} visual={<AgentVisual />} nextHref="/work/modernization" nextTitle="Platform modernization">
 
 <section id="context">
 
@@ -75,7 +75,7 @@ Only a live result of `available` confirms the requested stay and party. `not_av
 
 I built reusable, themed AI itinerary components and typed host-application bridges for multi-stop recommendations, room availability and itinerary handoff. The components carry the product’s visual language; the bridges carry the contract between the embeddable assistant and the host.
 
-This is the leverage in the work. A new itinerary pattern or host action attaches to a shared boundary rather than being rebuilt inside the conversation, and the same typed contract supports rendering, testing and integration.
+This is where the work compounds. A new itinerary pattern or host action attaches to a shared boundary rather than being rebuilt inside the conversation, and the same typed contract supports rendering, testing and integration.
 
 </section>
 
@@ -93,7 +93,7 @@ I refactored streaming services while preserving event contracts and introduced 
 
 <section id="leverage">
 
-## Scope & leverage
+## Scope & foundations
 
 The assistant is a platform boundary, not a single chat surface. Typed SSE, product-card contracts and host bridges let the embeddable experience plug into booking workflows without the host parsing prose or the assistant owning host behaviour.
 

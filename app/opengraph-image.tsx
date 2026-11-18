@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const alt =
-  "Kagiso Nyokolodi — Principal Software Engineer, frontend leadership and applied AI";
+  "Kagiso Nyokolodi — Principal Software Engineer, frontend architecture and applied AI";
 export const size = {
   width: 1200,
   height: 630,
@@ -153,8 +153,8 @@ export default async function Image() {
                   marginTop: 22,
                   fontSize: 74,
                   fontWeight: 600,
-                  letterSpacing: "-4px",
-                  lineHeight: 0.98,
+                  letterSpacing: "-3.2px",
+                  lineHeight: 1.02,
                 }}
               >
                 <span>Frontend systems</span>
@@ -182,8 +182,8 @@ export default async function Image() {
                   color: "#94a5b5",
                 }}
               >
-                Frontend leadership, architecture and applied AI across
-                internal operations, partner portals and traveller-facing
+                Principal-level frontend architecture, applied AI and delivery
+                across internal operations, partner portals and traveller-facing
                 products.
               </span>
 
@@ -310,7 +310,7 @@ export default async function Image() {
             }}
           >
             <span style={{ color: "#e9f0f6" }}>kagiso-nyokolodi.dev</span>
-            <span>Frontend leadership × applied AI</span>
+            <span>Principal engineering × applied AI</span>
           </div>
         </div>
       </div>

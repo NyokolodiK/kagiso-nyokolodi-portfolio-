@@ -25,7 +25,7 @@
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
   background: rgb(5 8 12 / 0.5);
-  font: 8px/1.5 var(--mono);
+  font: 0.625rem/1.5 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
@@ -54,13 +54,13 @@
 }
 
 .hudHint > span {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--signal);
 }
 
 .hudActive {
   display: none;
-  font: 8px/1.5 var(--mono);
+  font: 0.625rem/1.5 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--signal);
@@ -266,7 +266,7 @@
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 13px;
-  font: 8px/1.4 var(--mono);
+  font: 0.625rem/1.4 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--faint);
@@ -292,14 +292,14 @@
 
 .layerName {
   display: block;
-  font: 600 clamp(20px, 1.9vw, 25px) / 1 var(--display);
-  letter-spacing: -0.045em;
+  font: 600 clamp(1.25rem, 1.9vw, 1.5625rem) / 1 var(--display);
+  letter-spacing: -0.035em;
 }
 
 .layerDetail {
   display: block;
   margin-top: 7px;
-  font: 8px/1.55 var(--mono);
+  font: 0.625rem/1.55 var(--mono);
   letter-spacing: 0.01em;
   color: var(--muted);
 }
@@ -329,7 +329,7 @@
   padding: 11px 16px;
   border-top: 1px solid var(--line);
   background: rgb(5 8 12 / 0.5);
-  font: 8px/1.5 var(--mono);
+  font: 0.625rem/1.5 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--faint);
@@ -345,7 +345,7 @@
   background: rgb(255 255 255 / 0.02);
   color: var(--ink-3);
   cursor: pointer;
-  font: 8px/1.5 var(--mono);
+  font: 0.625rem/1.5 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   transition:
@@ -355,7 +355,7 @@
 }
 
 .stageFoot button span {
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: var(--signal);
   transition: transform 0.3s var(--ease);
 }
@@ -399,7 +399,7 @@
   margin: 0 -18px;
   padding: 12px 18px;
   border-bottom: 1px solid var(--line);
-  font: 8px/1.5 var(--mono);
+  font: 0.625rem/1.5 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
@@ -434,7 +434,7 @@
   border: 1px solid rgb(var(--accent-rgb) / 0.25);
   border-radius: var(--radius-pill);
   background: rgb(var(--accent-rgb) / 0.09);
-  font: 8px/1.4 var(--mono);
+  font: 0.625rem/1.4 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--accent-deep);
@@ -451,14 +451,14 @@
 .readoutBody strong {
   display: block;
   margin-bottom: 12px;
-  font: 600 clamp(25px, 2.2vw, 31px) / 0.98 var(--display);
-  letter-spacing: -0.05em;
+  font: 600 clamp(1.5625rem, 2.2vw, 1.9375rem) / 0.98 var(--display);
+  letter-spacing: -0.035em;
 }
 
 .readoutBody p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.72;
 }
 
@@ -476,7 +476,7 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
   background: rgb(255 255 255 / 0.018);
-  font: 7px/1.4 var(--mono);
+  font: 0.625rem/1.4 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted);
@@ -502,7 +502,7 @@
   background: none;
   color: var(--ink-3);
   text-align: left;
-  font-size: 13px;
+  font-size: 0.8125rem;
   cursor: pointer;
   transition:
     background 0.22s,
@@ -511,13 +511,13 @@
 }
 
 .layerNav button span {
-  font: 8px/1 var(--mono);
+  font: 0.625rem/1 var(--mono);
   color: var(--faint);
 }
 
 .layerNav button i {
   font-style: normal;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--faint);
   transition: transform 0.25s var(--ease);
 }
@@ -546,7 +546,7 @@
   margin: 14px 0 0;
   padding-top: 12px;
   border-top: 1px solid var(--line);
-  font: 8px/1.6 var(--mono);
+  font: 0.625rem/1.6 var(--mono);
   letter-spacing: 0.01em;
   color: var(--faint);
 }
@@ -632,10 +632,10 @@
     padding: 13px 14px 15px;
   }
   .layerName {
-    font-size: 19px;
+    font-size: 1.1875rem;
   }
   .layerDetail {
-    font-size: 8px;
+    font-size: 0.625rem;
   }
   .hudHint {
     display: none;

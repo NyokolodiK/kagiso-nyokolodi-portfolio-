@@ -14,7 +14,7 @@ export const metadata = {
   },
 };
 
-<CaseStudy number="01" title="Quick Builder" intro="Leading one itinerary across many connected decisions: the architecture and implementation behind a workflow that stays coherent as accommodation, activities and transport change." discipline="Product architecture / Frontend engineering" scope="React, TypeScript & Rails itinerary integration" status="Implemented workflow with continuing product development" leverage="Reusable providers · typed service contracts · regression coverage" outcomes={['Accommodation cleanup respects usage across itineraries, with an explained removal boundary.', 'Route edits connect persistence, itinerary refresh and asynchronous pricing.', 'Reusable providers, hooks and typed service contracts carry the workflow.']} visual={<BuilderVisual />} nextHref="/work/agent-assistant" nextTitle="Agent Assistant">
+<CaseStudy number="01" title="Quick Builder" intro="Leading one itinerary across many connected decisions: the architecture and implementation behind a workflow that stays coherent as accommodation, activities and transport change." discipline="Product architecture / Frontend engineering" scope="React, TypeScript & Rails itinerary integration" responsibility="Principal ownership — solution design, architecture & implementation" status="Implemented — continuing product development" leverage="Reusable providers · typed service contracts · regression coverage" outcomes={['Accommodation cleanup respects usage across itineraries, with an explained removal boundary.', 'Route edits connect persistence, itinerary refresh and asynchronous pricing.', 'Reusable providers, hooks and typed service contracts carry the workflow.']} visual={<BuilderVisual />} nextHref="/work/agent-assistant" nextTitle="Agent Assistant">
 
 <section id="context">
 
@@ -83,11 +83,11 @@ The implementation includes regression tests for accommodation usage, route sele
 
 <section id="leverage">
 
-## Scope & leverage
+## Scope & foundations
 
 The workflow is assembled from reusable providers, hooks and typed service contracts rather than screen-local state. That makes the itinerary boundary explicit and gives later changes a stable place to attach.
 
-The leverage is cumulative: regression tests cover accommodation usage, route selection and saving, lookup failures and pricing transitions, while Rails controller and service specs cover journey persistence. The work also extended into Rails services and APIs where a frontend feature depended on saved itinerary behaviour — cross-boundary ownership that outlives the feature, with shared state and service contracts other itinerary flows can reuse.
+The foundations compound: regression tests cover accommodation usage, route selection and saving, lookup failures and pricing transitions, while Rails controller and service specs cover journey persistence. The work also extended into Rails services and APIs where a frontend feature depended on saved itinerary behaviour — cross-boundary ownership that outlives the feature, with shared state and service contracts other itinerary flows can reuse.
 
 </section>
 

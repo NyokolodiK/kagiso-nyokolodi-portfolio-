@@ -36,7 +36,7 @@ export function Footer() {
             <a href="/Kagiso_Nyokolodi_CV.pdf" download>
               Download CV ↓
             </a>
-            <a href="mailto:Knyokolodi@gmail.com">Email ↗</a>
+            <a href="mailto:knyokolodi@gmail.com">Email ↗</a>
           </div>
           <div className={s.col}>
             <span>Colophon</span>

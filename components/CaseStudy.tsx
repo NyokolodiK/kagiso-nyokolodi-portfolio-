@@ -9,7 +9,7 @@ const sections = [
   ["constraints", "The constraints"],
   ["decisions", "Key decisions"],
   ["implementation", "Delivery & validation"],
-  ["leverage", "Scope & leverage"],
+  ["leverage", "Scope & foundations"],
   ["evidence", "What changed"],
   ["lessons", "Reflection"],
 ] as const;
@@ -20,6 +20,7 @@ type Props = {
   intro: string;
   discipline: string;
   scope: string;
+  responsibility: string;
   status: string;
   leverage: string;
   outcomes: string[];
@@ -35,6 +36,7 @@ export function CaseStudy({
   intro,
   discipline,
   scope,
+  responsibility,
   status,
   leverage,
   outcomes,
@@ -59,14 +61,14 @@ export function CaseStudy({
         <dl className={s.facts}>
           <div>
             <dt>Responsibility</dt>
-            <dd>Solution design, architecture &amp; implementation</dd>
+            <dd>{responsibility}</dd>
           </div>
           <div>
             <dt>Scope</dt>
             <dd>{scope}</dd>
           </div>
           <div>
-            <dt>Leverage</dt>
+            <dt>Foundations</dt>
             <dd>{leverage}</dd>
           </div>
           <div>
@@ -110,7 +112,7 @@ export function CaseStudy({
         <span className={s.nextLabel}>Next case study</span>
         <h2>{nextTitle}</h2>
         <span className={s.nextArrow} aria-hidden="true">
-          ↗
+          →
         </span>
       </Link>
     </article>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource-variable/archivo/wdth.css";
+import "@fontsource-variable/archivo/wght.css";
 import "@fontsource-variable/ibm-plex-sans/wght.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
@@ -20,7 +20,7 @@ const personSchema = {
   jobTitle: "Principal Software Engineer",
   description: SITE_DESCRIPTION,
   url: SITE_URL,
-  email: "mailto:Knyokolodi@gmail.com",
+  email: "mailto:knyokolodi@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Johannesburg",
